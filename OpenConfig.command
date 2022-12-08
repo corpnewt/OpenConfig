@@ -40,11 +40,11 @@ mount_point="${mount_point_desc:30}" # Extract the actual mount point
 echo " - Located at $mount_point"
 echo "Checking for config.plist..."
 
-if [ -e "$mount_point/EFI/OC/config.plist" ]; then
-    echo " - Located at $mount_point/EFI/OC/config.plist"
-    echo " - Opening..."
-    open "$mount_point/EFI/OC/config.plist"
-else
+if [ ! -e "$mount_point/EFI/OC/config.plist" ]; then
     echo " - Could not locate - aborting..."
     exit 1
 fi
+    
+echo " - Located at $mount_point/EFI/OC/config.plist"
+echo " - Opening..."
+open "$mount_point/EFI/OC/config.plist"
